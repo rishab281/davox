@@ -8,6 +8,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
+import HomeUI from './pages/HomeUI';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     {path: '/',
       element: <Home/>,
       children: [
+      {index: true, element: <HomeUI/>},
       {path: 'shop', element: <Shop/>},
       {path: 'about', element: <About/>},
       {path: 'contact', element: <Contact/>},

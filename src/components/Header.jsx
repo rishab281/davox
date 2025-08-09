@@ -1,6 +1,15 @@
 import { NavLink } from 'react-router-dom'
 import './Header.css'
+import {useAuth} from '../store/AuthContext.jsx'
+
 export default function Header() {
+    const { loggedIn, setLoggedIn } = useAuth()
+
+    function handleSignout(event) {
+        event.preventDefault();
+        setLoggedIn(false);
+    }
+
     return(
         <div className="custom-navbar container-fluid px-0">
             <nav className="navbar navbar-expand-lg navbar-light" style={{backgroundColor: '#fdf6e3'}}>
@@ -24,15 +33,17 @@ export default function Header() {
                             <NavLink className={({ isActive }) => `nav-link fs-5 ${isActive ? 'active-link' : ''}`} to={'contact'} end>Contact</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className={({ isActive }) => `nav-link fs-5 ${isActive ? 'active-link' : ''}`} to={'login'} end>SignIn</NavLink>
+                            {loggedIn? <NavLink className={({ isActive }) => `nav-link fs-5 ${isActive ? 'active-link' : ''}`} to={''} end onClick={handleSignout}>SignOut</NavLink>
+                            :
+                            <NavLink className={({ isActive }) => `nav-link fs-5 ${isActive ? 'active-link' : ''}`} to={'login'} end>SignIn</NavLink>}
                         </li>
-                        <li className="nav-item">
+                        {loggedIn && <li className="nav-item">
                             <NavLink className={({ isActive }) => `nav-link fs-5 ${isActive ? 'active-link' : ''}`} to={'profile'} end>Profile</NavLink>
-                        </li>
+                        </li>}
                     </ul>
                 </div>
             </div>
-        </nav>
+            </nav>
         </div>
     )
 }
