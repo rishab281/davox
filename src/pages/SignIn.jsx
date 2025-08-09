@@ -32,9 +32,9 @@ export default function SignIn() {
                 >
                     <div className="btn-group my-2 ms-4" role="group" aria-label="Basic example">
                         <button type="button" className="btn btn-secondary rounded me-4" onClick={() => setLogIn(true)}>Login</button>
-                        <button type="button" className="btn rounded btn-secondary ms-3" onClick={() => setLogIn(false)}>SignUp</button>
+                        <button type="button" className="btn rounded btn-secondary ms-4" onClick={() => setLogIn(false)}>SignUp</button>
                     </div>
-                    <div className="mb-3" style={{ borderBottom: '3px solid #f7db05ff' }}></div>
+                    <div className="mb-3" style={{ borderBottom: '3px solid #0e0e0dff' }}></div>
                     {login ? <Form onSubmit={handleSubmit} className="ps-1 pe-5">
                         <div className="mb-3">
                             <label className="form-label">Email</label>
